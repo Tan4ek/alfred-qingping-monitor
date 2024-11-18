@@ -11,7 +11,7 @@ import time
 oauth_host = 'oauth.cleargrass.com'
 api_host = 'apis.cleargrass.com'
 temp_directory = os.getenv("alfred_workflow_cache", "/tmp")
-workflow_directory = os.getenv("alfred_workflow_data", os.path.expanduser("~/Library/Application Support/Alfred/Workflow Data/com.alfredapp.clear-grass"))
+workflow_directory = '.'
 
 client_id = os.getenv("CLEARGRASS_CLIENT_ID", '')
 client_secret = os.getenv("CLEARGRASS_CLIENT_SECRET", '')
@@ -20,11 +20,9 @@ def read_access_token_from_cache() -> str | None:
     if not os.path.exists(temp_directory):
         os.makedirs(temp_directory)
 
-    # read the access token cache file
     access_token_cache_filepath = temp_directory + '/access_token_cache'
     if os.path.exists(access_token_cache_filepath):
         with open(access_token_cache_filepath, 'r') as file:
-            # read line by line , split by ':' and create a dict
             for line in file.readlines():
                 parts = line.split(':')
                 expired_at_time = int(parts[0].strip())
@@ -132,25 +130,33 @@ try:
             'title': f'CO2 {co2}',
             'subtitle' : f'{name}',
             'arg': f"{co2}",
-            'icon': workflow_directory +'/icons/air-quality.png'
+            'icon': {
+                'path': workflow_directory +'/icons/air-quality.png'
+            }
         })
         items.append({
             'title': f'PM2.5 {pm25}',
             'subtitle' : f'{name}',
             'arg': f"{pm25}",
-            'icon': workflow_directory +'/icons/air-pollution.png'
+            'icon': {
+               'path': workflow_directory +'/icons/air-pollution.png'
+            }
         })
         items.append({
             'title': f'TVOC {tvoc}',
             'subtitle' : f'{name}',
             'arg': f"{tvoc}",
-            'icon': workflow_directory+'/icons/voc.png'
+            'icon': {
+                'path': workflow_directory+'/icons/voc.png'
+            }
         })
         items.append({
             'title': f'Humidity {humidity}',
             'subtitle' : f'{name}',
             'arg': f"{humidity}",
-            'icon': workflow_directory+'/icons/humidity.png'
+            'icon': {
+                'path': workflow_directory+'/icons/humidity.png'
+            }
         })
     print(json.dumps({'items': items}))
 except Exception as e:
