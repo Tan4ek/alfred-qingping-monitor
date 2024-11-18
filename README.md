@@ -1,0 +1,1 @@
+# alfred-qingping-monitor
