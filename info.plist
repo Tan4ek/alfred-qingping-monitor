@@ -6,6 +6,19 @@
 	<string>com.tan4ek.qingping-monitor</string>
 	<key>connections</key>
 	<dict>
+		<key>4C932A7D-D78F-4F7C-A2C2-6E56A57CDCA9</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</key>
 		<array>
 			<dict>
@@ -23,7 +36,7 @@
 	<key>createdby</key>
 	<string>Sergei Samokhvalov</string>
 	<key>description</key>
-	<string></string>
+	<string>Qingping air monitoring</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
@@ -42,7 +55,7 @@
 				<key>argumenttrimmode</key>
 				<integer>0</integer>
 				<key>argumenttype</key>
-				<integer>1</integer>
+				<integer>2</integer>
 				<key>escaping</key>
 				<integer>0</integer>
 				<key>keyword</key>
@@ -56,21 +69,23 @@
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>runningsubtext</key>
-				<string></string>
+				<string>Request in progress...</string>
 				<key>script</key>
 				<string></string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
 				<string>scripts/devices.py</string>
+				<key>skipuniversalaction</key>
+				<true/>
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
-				<string></string>
+				<string>Qingping air monitoring</string>
 				<key>type</key>
 				<integer>8</integer>
 				<key>withspace</key>
-				<true/>
+				<false/>
 			</dict>
 			<key>type</key>
 			<string>alfred.workflow.input.scriptfilter</string>
@@ -98,24 +113,75 @@
 			<key>version</key>
 			<integer>3</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>qingping</string>
+				<key>subtext</key>
+				<string>Get air monitoring data</string>
+				<key>text</key>
+				<string>Qingping air monitoring</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>4C932A7D-D78F-4F7C-A2C2-6E56A57CDCA9</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
-	<string>fdfdsf</string>
+	<string># alfred-qingping-monitor
+
+![example.jpg](./example.jpg)
+
+## Feature
+
+Make your Qingping air monitoring data available in Alfred 5.
+For now, it only supports cloud data.
+It now supports displaying the following data: CO2, PM2.5, TVOC, Temperature, Humidity.
+
+## Prerequisite
+
+- Alfred 5
+- Python 3
+- Qingping air monitor (for example, [Qingping Air Monitor](https://www.qingping.co/air-monitor/overview))
+
+## Configuration
+
+Connect the Qingping Air monitor to the Qingping+ app.
+Generate a Qingping Developer API token from [developer.qingping.co/personal/permissionApply | Access Management | Apply Access](https://developer.qingping.co/personal/permissionApply)</string>
 	<key>uidata</key>
 	<dict>
-		<key>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</key>
+		<key>4C932A7D-D78F-4F7C-A2C2-6E56A57CDCA9</key>
 		<dict>
 			<key>xpos</key>
-			<real>50</real>
+			<real>30</real>
 			<key>ypos</key>
-			<real>50</real>
+			<real>95</real>
 		</dict>
-		<key>8538F2F7-9084-49FE-BAA3-3E70BE99FBC6</key>
+		<key>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>4</integer>
 			<key>xpos</key>
 			<real>330</real>
 			<key>ypos</key>
-			<real>50</real>
+			<real>95</real>
+		</dict>
+		<key>8538F2F7-9084-49FE-BAA3-3E70BE99FBC6</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>4</integer>
+			<key>xpos</key>
+			<real>610</real>
+			<key>ypos</key>
+			<real>95</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>

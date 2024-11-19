@@ -7,6 +7,7 @@ import base64
 import json
 import sys
 import time
+import datetime
 
 oauth_host = 'oauth.cleargrass.com'
 api_host = 'apis.cleargrass.com'
@@ -15,6 +16,25 @@ workflow_directory = '.'
 
 client_id = os.getenv("CLEARGRASS_CLIENT_ID", '')
 client_secret = os.getenv("CLEARGRASS_CLIENT_SECRET", '')
+
+CO2_THRESHOLD_GREEN = 1000
+CO2_THRESHOLD_YELLOW = 2000
+
+PM25_THRESHOLD_GREEN = 12
+PM25_THRESHOLD_YELLOW = 35
+
+TVOC_THRESHOLD_GREEN = 220
+TVOC_THRESHOLD_YELLOW = 660
+
+HUMIDITY_THRESHOLD_GREEN_LOW = 40
+HUMIDITY_THRESHOLD_GREEN_HIGH = 60
+HUMIDITY_THRESHOLD_YELLOW_LOW = 20
+HUMIDITY_THRESHOLD_YELLOW_HIGH = 80
+
+TEMPERATURE_THRESHOLD_GREEN_LOW = 20
+TEMPERATURE_THRESHOLD_GREEN_HIGH = 27
+TEMPERATURE_THRESHOLD_YELLOW_LOW = 18
+TEMPERATURE_THRESHOLD_YELLOW_HIGH = 32
 
 def read_access_token_from_cache() -> str | None:
     if not os.path.exists(temp_directory):
@@ -106,6 +126,74 @@ def get_devices(access_token: str) -> dict[str, any]:
     finally:
         conn.close()
 
+def choose_co2_icon(co2_value: int) -> str:
+    if co2_value < CO2_THRESHOLD_GREEN:
+        return workflow_directory + '/icons/smile_green.png'
+    elif CO2_THRESHOLD_GREEN <= co2_value < CO2_THRESHOLD_YELLOW:
+        return workflow_directory + '/icons/smile_yellow.png'
+    else:
+        return workflow_directory + '/icons/sigh_red.png'
+
+def choose_pm25_icon(pm25_value: int) -> str:
+    if pm25_value < PM25_THRESHOLD_GREEN:
+        return workflow_directory + '/icons/smile_green.png'
+    elif PM25_THRESHOLD_GREEN <= pm25_value < PM25_THRESHOLD_YELLOW:
+        return workflow_directory + '/icons/smile_yellow.png'
+    else:
+        return workflow_directory + '/icons/sigh_red.png'
+
+def choose_tvoc_icon(tvoc_value: int) -> str:
+    if tvoc_value < TVOC_THRESHOLD_GREEN:
+        return workflow_directory + '/icons/smile_green.png'
+    elif TVOC_THRESHOLD_GREEN <= tvoc_value < TVOC_THRESHOLD_YELLOW:
+        return workflow_directory + '/icons/smile_yellow.png'
+    else:
+        return workflow_directory + '/icons/sigh_red.png'
+
+def choose_humidity_icon(humidity_value: int) -> str:
+    if HUMIDITY_THRESHOLD_GREEN_LOW <= humidity_value < HUMIDITY_THRESHOLD_GREEN_HIGH:
+        return workflow_directory + '/icons/smile_green.png'
+    elif HUMIDITY_THRESHOLD_YELLOW_LOW <= humidity_value < HUMIDITY_THRESHOLD_GREEN_LOW or HUMIDITY_THRESHOLD_GREEN_HIGH <= humidity_value < HUMIDITY_THRESHOLD_YELLOW_HIGH:
+        return workflow_directory + '/icons/smile_yellow.png'
+    else:
+        return workflow_directory + '/icons/sigh_red.png'
+
+def choose_temperature_icon(temperature_value: int) -> str:
+    if TEMPERATURE_THRESHOLD_GREEN_LOW <= temperature_value < TEMPERATURE_THRESHOLD_GREEN_HIGH:
+        return workflow_directory + '/icons/smile_green.png'
+    elif TEMPERATURE_THRESHOLD_YELLOW_LOW <= temperature_value < TEMPERATURE_THRESHOLD_GREEN_LOW or TEMPERATURE_THRESHOLD_GREEN_HIGH <= temperature_value < TEMPERATURE_THRESHOLD_YELLOW_HIGH:
+        return workflow_directory + '/icons/smile_yellow.png'
+    else:
+        return workflow_directory + '/icons/sigh_red.png'
+
+def generate_items(devices: list) -> list:
+    items = []
+    for device in devices:
+        name = device['info']['name']
+        data = device['data']
+        timestamp = data.get('timestamp', {}).get('value', None)
+        human_readable_timestamp = datetime.datetime.fromtimestamp(timestamp).strftime('%H:%M:%S %d.%m.%Y') if timestamp else 'Unknown time'
+
+        sensors = {
+            'co2': ('CO2 {value} ppm', choose_co2_icon),
+            'pm25': ('PM2.5 {value} μg/m³', choose_pm25_icon),
+            'tvoc': ('TVOC {value} ppb', choose_tvoc_icon),
+            'humidity': ('Humidity {value} %', choose_humidity_icon),
+            'temperature': ('Temperature {value} °C', choose_temperature_icon)
+        }
+
+        for key, (title_template, icon_func) in sensors.items():
+            value = data.get(key, {}).get('value', None)
+            if value is not None:
+                items.append({
+                    'title': title_template.format(value=value),
+                    'subtitle': f'{name}, {human_readable_timestamp}',
+                    'arg': f"{value}",
+                    'icon': {
+                        'path': icon_func(value)
+                    }
+                })
+    return items
 
 access_token = read_access_token_from_cache()
 if access_token is None:
@@ -117,47 +205,8 @@ if access_token is None:
 try:
     devices_response = get_devices(access_token)
     devices = devices_response['devices']
-    items = []
-    for device in devices:
-        name = device['info']['name']
-        data = device['data']
-        co2 = data['co2']['value']
-        pm25 = data['pm25']['value']
-        tvoc = data['tvoc']['value']
-        humidity = data['humidity']['value']
-        timestamp = data['timestamp']['value'] # unix epoch seconds
-        items.append({
-            'title': f'CO2 {co2}',
-            'subtitle' : f'{name}',
-            'arg': f"{co2}",
-            'icon': {
-                'path': workflow_directory +'/icons/air-quality.png'
-            }
-        })
-        items.append({
-            'title': f'PM2.5 {pm25}',
-            'subtitle' : f'{name}',
-            'arg': f"{pm25}",
-            'icon': {
-               'path': workflow_directory +'/icons/air-pollution.png'
-            }
-        })
-        items.append({
-            'title': f'TVOC {tvoc}',
-            'subtitle' : f'{name}',
-            'arg': f"{tvoc}",
-            'icon': {
-                'path': workflow_directory+'/icons/voc.png'
-            }
-        })
-        items.append({
-            'title': f'Humidity {humidity}',
-            'subtitle' : f'{name}',
-            'arg': f"{humidity}",
-            'icon': {
-                'path': workflow_directory+'/icons/humidity.png'
-            }
-        })
+
+    items = generate_items(devices)
     print(json.dumps({'items': items}))
 except Exception as e:
     print(f"Failed to get devices: {e}")
