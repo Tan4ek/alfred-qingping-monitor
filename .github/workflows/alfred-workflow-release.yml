@@ -21,7 +21,7 @@ jobs:
       - name: Build .alfredworkflow
         run: |
           zip --recurse-paths --symlinks "${{ env.WORKFLOW_NAME }}.alfredworkflow" . \
-            --exclude "README.md" ".git*"
+            --exclude "README.md" "TODO.md" ".git*"
 
       - name: Release
         uses: softprops/action-gh-release@v2

@@ -5,7 +5,7 @@
 - [x] Update icons
 - [x] Display sensor units (what the numbers mean)
 - [x] Create description and setup instructions
-- [ ] Make release on GitHub (create README.md, create GitHub action pipeline)
+- [x] Make release on GitHub (create README.md, create GitHub action pipeline)
 - [x] Simple good or bad indicator
 
 ### 1.1.0
