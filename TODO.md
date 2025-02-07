@@ -9,5 +9,7 @@
 - [x] Simple good or bad indicator
 
 ### 1.1.0
-- [ ] Instead timestamp use X minutes ago
+- [x] Instead timestamp use X minutes ago
+
+### 1.2.0
 - [ ] Device configuration - set report_interval & collect_interval
