@@ -6,11 +6,50 @@
 	<string>com.tan4ek.qingping-monitor</string>
 	<key>connections</key>
 	<dict>
+		<key>3225DD92-AC3D-4866-BD02-1C7B0AF8D305</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>DDA0319F-B04F-4282-8543-A344C838EF49</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>4C09CB0E-27D1-4AB0-8A6F-9486B8EC4E4B</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>3225DD92-AC3D-4866-BD02-1C7B0AF8D305</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
 		<key>4C932A7D-D78F-4F7C-A2C2-6E56A57CDCA9</key>
 		<array>
 			<dict>
 				<key>destinationuid</key>
 				<string>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>7B74CA5B-3E9E-437A-AFA7-B7935E0D5AEF</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>4C09CB0E-27D1-4AB0-8A6F-9486B8EC4E4B</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -46,6 +85,25 @@
 		<dict>
 			<key>config</key>
 			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>8538F2F7-9084-49FE-BAA3-3E70BE99FBC6</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
 				<key>alfredfiltersresults</key>
 				<false/>
 				<key>alfredfiltersresultsmatchmode</key>
@@ -75,7 +133,7 @@
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
-				<string>scripts/devices.py</string>
+				<string>scripts/sensors.py</string>
 				<key>skipuniversalaction</key>
 				<true/>
 				<key>subtext</key>
@@ -91,25 +149,6 @@
 			<string>alfred.workflow.input.scriptfilter</string>
 			<key>uid</key>
 			<string>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</string>
-			<key>version</key>
-			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>autopaste</key>
-				<false/>
-				<key>clipboardtext</key>
-				<string>{query}</string>
-				<key>ignoredynamicplaceholders</key>
-				<false/>
-				<key>transient</key>
-				<false/>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.output.clipboard</string>
-			<key>uid</key>
-			<string>8538F2F7-9084-49FE-BAA3-3E70BE99FBC6</string>
 			<key>version</key>
 			<integer>3</integer>
 		</dict>
@@ -134,22 +173,204 @@
 			<key>version</key>
 			<integer>1</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Request in progress...</string>
+				<key>script</key>
+				<string></string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>scripts/list_devices.py</string>
+				<key>skipuniversalaction</key>
+				<true/>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Qingping air monitoring</string>
+				<key>type</key>
+				<integer>8</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>4C09CB0E-27D1-4AB0-8A6F-9486B8EC4E4B</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Request in progress...</string>
+				<key>script</key>
+				<string></string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>scripts/list_possible_device_settings.py</string>
+				<key>skipuniversalaction</key>
+				<true/>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Qingping air monitoring</string>
+				<key>type</key>
+				<integer>8</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>3225DD92-AC3D-4866-BD02-1C7B0AF8D305</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>alfredfiltersresults</key>
+				<false/>
+				<key>alfredfiltersresultsmatchmode</key>
+				<integer>0</integer>
+				<key>argumenttreatemptyqueryasnil</key>
+				<false/>
+				<key>argumenttrimmode</key>
+				<integer>0</integer>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>0</integer>
+				<key>queuedelaycustom</key>
+				<integer>3</integer>
+				<key>queuedelayimmediatelyinitially</key>
+				<false/>
+				<key>queuedelaymode</key>
+				<integer>0</integer>
+				<key>queuemode</key>
+				<integer>1</integer>
+				<key>runningsubtext</key>
+				<string>Request in progress...</string>
+				<key>script</key>
+				<string></string>
+				<key>scriptargtype</key>
+				<integer>1</integer>
+				<key>scriptfile</key>
+				<string>scripts/update_device_settings.py</string>
+				<key>skipuniversalaction</key>
+				<true/>
+				<key>subtext</key>
+				<string></string>
+				<key>title</key>
+				<string>Qingping air monitoring</string>
+				<key>type</key>
+				<integer>8</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>DDA0319F-B04F-4282-8543-A344C838EF49</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>qingping-setup</string>
+				<key>subtext</key>
+				<string>Set the reporting interval for device data transmission.</string>
+				<key>text</key>
+				<string>Qingping device setup</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>7B74CA5B-3E9E-437A-AFA7-B7935E0D5AEF</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string># alfred-qingping-monitor
 
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/Tan4ek/alfred-qingping-monitor)
+![Python Version](https://img.shields.io/badge/python-3.10%2B-blue)
+![License](https://img.shields.io/badge/license-GNU%20GPL%20v3-blue)
+![Alfred Workflow](https://img.shields.io/badge/alfred-5.0%2B-purple)
+
 ![example.jpg](./example.jpg)
 
-## Feature
+## Features
 
-Make your Qingping air monitoring data available in Alfred 5.
-For now, it only supports cloud data.
-It now supports displaying the following data: CO2, PM2.5, TVOC, Temperature, Humidity.
+This Alfred workflow allows you to quickly access your Qingping air quality data directly from Alfred 5. 
+
+Currently supported measurements:
+- CO₂ (Carbon Dioxide)
+- PM2.5 (Fine particulate matter)
+- TVOC (Total Volatile Organic Compounds)
+- Temperature
+- Humidity
+
+Note: At this time, the workflow only supports data from Qingping Cloud services.
+
+Also, you can configure device data reporting intervals (from 1 minute to 1 hour) directly from Alfred.
 
 ## Prerequisite
 
 - Alfred 5
-- Python 3
+- Python 3.10+
 - Qingping air monitor (for example, [Qingping Air Monitor](https://www.qingping.co/air-monitor/overview))
 
 ## Configuration
@@ -158,12 +379,41 @@ Connect the Qingping Air monitor to the Qingping+ app.
 Generate a Qingping Developer API token from [developer.qingping.co/personal/permissionApply | Access Management | Apply Access](https://developer.qingping.co/personal/permissionApply)</string>
 	<key>uidata</key>
 	<dict>
+		<key>3225DD92-AC3D-4866-BD02-1C7B0AF8D305</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>1</integer>
+			<key>xpos</key>
+			<real>610</real>
+			<key>ypos</key>
+			<real>255</real>
+		</dict>
+		<key>4C09CB0E-27D1-4AB0-8A6F-9486B8EC4E4B</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>1</integer>
+			<key>xpos</key>
+			<real>325</real>
+			<key>ypos</key>
+			<real>255</real>
+		</dict>
 		<key>4C932A7D-D78F-4F7C-A2C2-6E56A57CDCA9</key>
 		<dict>
+			<key>colorindex</key>
+			<integer>4</integer>
 			<key>xpos</key>
 			<real>30</real>
 			<key>ypos</key>
 			<real>95</real>
+		</dict>
+		<key>7B74CA5B-3E9E-437A-AFA7-B7935E0D5AEF</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>1</integer>
+			<key>xpos</key>
+			<real>35</real>
+			<key>ypos</key>
+			<real>255</real>
 		</dict>
 		<key>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</key>
 		<dict>
@@ -182,6 +432,15 @@ Generate a Qingping Developer API token from [developer.qingping.co/personal/per
 			<real>610</real>
 			<key>ypos</key>
 			<real>95</real>
+		</dict>
+		<key>DDA0319F-B04F-4282-8543-A344C838EF49</key>
+		<dict>
+			<key>colorindex</key>
+			<integer>1</integer>
+			<key>xpos</key>
+			<real>885</real>
+			<key>ypos</key>
+			<real>255</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
@@ -230,7 +489,7 @@ Generate a Qingping Developer API token from [developer.qingping.co/personal/per
 		</dict>
 	</array>
 	<key>version</key>
-	<string>1.1.0</string>
+	<string>1.2.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/Tan4ek/alfred-qingping-monitor</string>
 </dict>

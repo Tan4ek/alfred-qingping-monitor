@@ -12,4 +12,4 @@
 - [x] Instead timestamp use X minutes ago
 
 ### 1.2.0
-- [ ] Device configuration - set report_interval & collect_interval
+- [x] Device configuration - set report_interval & collect_interval

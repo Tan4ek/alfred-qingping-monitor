@@ -20,6 +20,8 @@ Currently supported measurements:
 
 Note: At this time, the workflow only supports data from Qingping Cloud services.
 
+Also, you can configure device data reporting intervals (from 1 minute to 1 hour) directly from Alfred.
+
 ## Prerequisite
 
 - Alfred 5
