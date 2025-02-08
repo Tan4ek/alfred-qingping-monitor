@@ -1,17 +1,29 @@
 # alfred-qingping-monitor
 
+![GitHub release (latest by date)](https://img.shields.io/github/v/release/Tan4ek/alfred-qingping-monitor)
+![Python Version](https://img.shields.io/badge/python-3.10%2B-blue)
+![License](https://img.shields.io/badge/license-GNU%20GPL%20v3-blue)
+![Alfred Workflow](https://img.shields.io/badge/alfred-5.0%2B-purple)
+
 ![example.jpg](./example.jpg)
 
-## Feature
+## Features
 
-Make your Qingping air monitoring data available in Alfred 5.
-For now, it only supports cloud data.
-It now supports displaying the following data: CO2, PM2.5, TVOC, Temperature, Humidity.
+This Alfred workflow allows you to quickly access your Qingping air quality data directly from Alfred 5. 
+
+Currently supported measurements:
+- CO₂ (Carbon Dioxide)
+- PM2.5 (Fine particulate matter)
+- TVOC (Total Volatile Organic Compounds)
+- Temperature
+- Humidity
+
+Note: At this time, the workflow only supports data from Qingping Cloud services.
 
 ## Prerequisite
 
 - Alfred 5
-- Python 3
+- Python 3.10+
 - Qingping air monitor (for example, [Qingping Air Monitor](https://www.qingping.co/air-monitor/overview))
 
 ## Configuration

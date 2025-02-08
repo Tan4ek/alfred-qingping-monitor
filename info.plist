@@ -230,7 +230,7 @@ Generate a Qingping Developer API token from [developer.qingping.co/personal/per
 		</dict>
 	</array>
 	<key>version</key>
-	<string>1.0.0</string>
+	<string>1.1.0</string>
 	<key>webaddress</key>
 	<string>https://github.com/Tan4ek/alfred-qingping-monitor</string>
 </dict>
